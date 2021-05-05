@@ -12,7 +12,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:nuxt/recommended',
   ],
-  plugins: [],
+  plugins: [["@babel/plugin-proposal-private-methods", { "loose": true }]],
   // add your custom rules here
   rules: {},
 }
