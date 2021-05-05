@@ -15,9 +15,9 @@ def init(couch_db_url= 'http://admin:admin@127.0.0.1:5984', database_name = 'moc
         db = couch.create(db_name)
 
 def get_timestamp():
-    import time
-    ts = time.gmtime()
-    return str(time.strftime("%Y-%m-%d %H:%M:%S", ts))
+    from datetime import datetime
+    now = datetime.now()
+    return str(now.strftime("%Y-%m-%d %H:%M:%S"))
 
 def add_record(_value, _type):
     doc = {'value': _value, 'type': _type, 'date': get_timestamp()}

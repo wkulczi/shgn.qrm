@@ -4,7 +4,7 @@ from w1thermsensor import W1ThermSensor, Sensor
 
 def query_water_temp_mock():
     import random
-    return random.random(15,40)
+    return 15 + (40-15)*random.random()
 
 def query_light_mock():
     import random

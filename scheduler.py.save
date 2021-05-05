@@ -1,0 +1,12 @@
+import schedule
+import time
+
+def job(args):    print(args)
+    print("{} Worker says: I'm working...".format(*args))
+
+schedule.every(10).seconds.do(job,"10 second")
+schedule.every(10).minutes.do(job,"10 minute")
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
