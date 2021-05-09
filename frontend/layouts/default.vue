@@ -33,9 +33,15 @@ export default {
   head() {
     return {
       title: 'shgn',
-      link: [{ rel: 'stylesheet', href: '/bootstrap/bootstrap.min.css' }],
+      link: [
+        { rel: 'stylesheet', href: '/bootstrap/bootstrap.min.css' },
+        { rel: 'stylesheet', href: 'video-js.css' },
+      ],
       script: [
         { src: '/bootstrap/bootstrap.bundle.min.js', type: 'text/javascript' },
+        { src: '/dash.all.min.js', type: 'text/javascript' },
+        { src: '/video.min.js', type: 'text/javascript' },
+        { src: '/videojs-dash-min.js', type: 'text/javascript' },
       ],
     }
   },

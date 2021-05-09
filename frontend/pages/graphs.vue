@@ -23,6 +23,14 @@
         <!-- todo line chart of temperatures, should be pretty steady -->
       </v-col>
       <v-col cols="4">
+        <video
+          id="example-video" 
+          width=600
+          height=300 
+          class="video-js vjs-default-skin" 
+          controls
+        >
+        </video>
         Stream
         <!-- todo DASH stream-->
       </v-col>
@@ -33,6 +41,15 @@
 <script>
 export default {
   name: 'Graphs',
+  mounted() {
+    const player = videojs('example-video')
+    // player.src({ src: 'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd', type: 'application/dash+xml'});
+    player.src({
+      src: 'http://localhost/camera01/camera01.mpd',
+      type: 'application/dash+xml',
+    })
+    player.play()
+  },
   data() {
     return {
       pieChartData: [],
