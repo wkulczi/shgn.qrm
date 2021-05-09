@@ -24,13 +24,12 @@
       </v-col>
       <v-col cols="4">
         <video
-          id="example-video" 
-          width=600
-          height=300 
-          class="video-js vjs-default-skin" 
+          id="example-video"
+          width="600"
+          height="300"
+          class="video-js vjs-default-skin"
           controls
-        >
-        </video>
+        ></video>
         Stream
         <!-- todo DASH stream-->
       </v-col>
@@ -41,22 +40,6 @@
 <script>
 export default {
   name: 'Graphs',
-  mounted() {
-    const player = videojs('example-video')
-    // player.src({ src: 'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd', type: 'application/dash+xml'});
-    player.src({
-      src: 'http://localhost/camera01/camera01.mpd',
-      type: 'application/dash+xml',
-    })
-    player.play()
-  },
-  data() {
-    return {
-      pieChartData: [],
-      lightChartData: {},
-      tempChartData: {},
-    }
-  },
   async asyncData({ $axios }) {
     const resp = await $axios.$get('/api/graph-data')
     const pieChartData = [
@@ -66,6 +49,23 @@ export default {
     const lightChartData = resp.lights
     const tempChartData = resp.temps
     return { pieChartData, lightChartData, tempChartData }
+  },
+  data() {
+    return {
+      pieChartData: [],
+      lightChartData: {},
+      tempChartData: {},
+    }
+  },
+  mounted() {
+    // eslint-disable-next-line no-undef
+    const player = videojs('example-video')
+    // player.src({ src: 'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd', type: 'application/dash+xml'});
+    player.src({
+      src: 'http://localhost/camera01/camera01.mpd',
+      type: 'application/dash+xml',
+    })
+    player.play()
   },
 }
 </script>
