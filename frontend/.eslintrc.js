@@ -6,13 +6,16 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint',
+    rules: {
+      camelcase: [2, { properties: 'never' }],
+    },
   },
   extends: [
     '@nuxtjs',
     'plugin:prettier/recommended',
     'plugin:nuxt/recommended',
   ],
-  plugins: [["@babel/plugin-proposal-private-methods", { "loose": true }]],
+  plugins: [],
   // add your custom rules here
   rules: {},
 }
