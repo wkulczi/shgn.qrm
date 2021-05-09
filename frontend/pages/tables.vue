@@ -7,7 +7,7 @@
             <v-card-title>Header tabeli</v-card-title>
             <v-data-table
               :headers="headers"
-              :items="desserts"
+              :items="tempData"
               :items-per-page="10"
               class="elevation-1"
               :footer-props="footerProps"
@@ -22,7 +22,7 @@
 
             <v-data-table
               :headers="headers"
-              :items="desserts"
+              :items="lightData"
               :items-per-page="10"
               class="elevation-1"
               :footer-props="footerProps"
@@ -39,13 +39,17 @@
 export default {
   name: 'Tables',
   async asyncData({ $axios }) {
-    const fetchedData = await $axios.$get(
-      'https://jsonplaceholder.typicode.com/todos/1'
-    )
-    return { fetchedData }
+    const resp = await $axios.$get('/api/tables')
+    const tempData = resp.temps
+    const lightData = resp.lights
+    return { tempData, lightData }
   },
   data() {
     return {
+      tableDatas: {
+        tempData: {},
+        lightData: {},
+      },
       footerProps: {
         rowsPerPageText: '',
         itemsPerPageOptions: [],
@@ -55,9 +59,9 @@ export default {
         {
           text: 'Timestamp',
           sortable: false,
-          value: 'name',
+          value: 'date',
         },
-        { text: 'Value', value: 'iron' },
+        { text: 'Value', value: 'value' },
       ],
       desserts: [
         {

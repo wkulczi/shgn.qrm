@@ -44,12 +44,29 @@ def create_app(test_config=None):
 
     @app.route('/api/tables')
     def get_tables():
-        temp_data = couch_calls.get_records('temp')
-        light_data = couch_calls.get_records('light')
+        temp_data = couch_calls.get_records_by_key('temp')
+        light_data = couch_calls.get_records_by_key('light')
         response_body = {
             "temps": temp_data,
             "lights": light_data
         }
         res = make_response(jsonify(response_body), 200)
+        return res
+
+    @app.route('/api/graph-data')
+    def get_graph_data():
+        temp_data_as_dict = {element['date']: element['value'] for element in couch_calls.get_records_by_key('temp', False)}
+        light_data = couch_calls.get_records_by_key('light', False)
+        times_above_threshhold = sum(row['value']> 600 for row in light_data)
+        light_data_as_dict = {element['date']:element['value'] for element in light_data}
+        response_body = {
+            "light_rate": {
+                "above": (times_above_threshhold/len(light_data)) * 100,
+                "below": ((len(light_data) - times_above_threshhold)/len(light_data)) * 100
+            },
+            "temps": temp_data_as_dict,
+            "lights": light_data_as_dict
+        }
+        res = make_response(jsonify(response_body),200)
         return res
     return app

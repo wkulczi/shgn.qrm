@@ -12,7 +12,8 @@ def init_db():
     couch_calls.init()    
 
 def init_schedule():
-    schedule.every(25).seconds.do(check_sensors)
+    schedule.every(25).seconds.do(check_sensors) #only for mockups, do not use in real case scenario (the db will explode)
+    # schedule.every().hour.do(check_sensors)
 
 def start_loop():
     while True:

@@ -23,7 +23,7 @@ def add_record(_value, _type):
     doc = {'value': _value, 'type': _type, 'date': get_timestamp()}
     db.save(doc) #todo ustaw timestamp jako id
 
-def get_records(_type):
+def get_records_manually(_type):
     try:
         resultlist = list()
         for doc in db.find({'selector': {'type': _type}}):
@@ -35,6 +35,35 @@ def get_records(_type):
         else:
             print(e)
         return []
+
+def get_records_from_view(_type):
+    try:
+        resultlist = []
+        for doc in db.view('testdesigndoc/'+_type):
+            print(doc)
+            resultlist.append({'date':doc.key, 'value':doc.value})
+        return resultlist
+    except Exception as e:
+        if hasattr(e, 'message'):
+            print(e.message)
+        else:
+            print(e)
+        return []
+        
+def get_records_by_key(_type, reverse_results=True):
+    result = []
+    if (_type=='temp'):
+        result = get_records_from_view('temp-view')
+        if not result:
+            result = get_records_manually(_type)
+    elif (_type =='light'):
+        result = get_records_from_view('light-view')
+        if not result:
+            result = get_records_manually(_type)
+    if reverse_results:
+        return result[::-1]
+    else:
+        return result
 
 def clear_db():
     del couch[db_name]

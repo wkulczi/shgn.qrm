@@ -29,29 +29,30 @@ export default {
       watchWindowFocusInterval: null,
     }
   },
+  async fetch() {
+    const resp = await this.$axios.$get('/api/temp')
+    this.temp = resp.temp
+  },
   beforeDestroy() {
     clearInterval(this.fetchDataInterval)
     clearInterval(this.watchWindowFocusInterval)
   },
-  // async fetch() {
-  //   this.temp = await this.$axios.$get('endpoint')
-  // },
   mounted() {
     this.fetchDataInterval = setInterval(function () {
       this.timerPassed = !(this.timerPassed && this.documentHasFocus)
-    }, 30000)
+    }.bind(this), 30000)
     this.watchWindowFocusInterval = setInterval(function () {
       this.documentHasFocus = document.hasFocus()
       if (this.timerPassed && this.documentHasFocus) {
         this.timerPassed = false
-        // this.$fetch()
+        this.$fetch()
       }
       if (this.documentHasFocus) {
         document.title = 'shgn'
       } else {
         document.title = 'shgn.sleep'
       }
-    }, 500)
+    }.bind(this), 500)
   },
 }
 </script>
@@ -84,6 +85,7 @@ export default {
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
+/* todo add some kind of animation so you could know that it refreshed */
 .temp-div {
   padding: 1rem 0 0 2rem;
   display: block;
