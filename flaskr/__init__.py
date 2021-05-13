@@ -4,6 +4,10 @@ from flask import Flask, jsonify, make_response
 import gpio_calls
 import couch_calls
 
+
+LIGHT_THRESHHOLD=600 #change if needed in the future
+
+
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -57,12 +61,17 @@ def create_app(test_config=None):
     def get_graph_data():
         temp_data_as_dict = {element['date']: element['value'] for element in couch_calls.get_records_by_key('temp', False)}
         light_data = couch_calls.get_records_by_key('light', False)
-        times_above_threshhold = sum(row['value']> 600 for row in light_data)
+        times_above_threshhold = sum(row['value']> LIGHT_THRESHHOLD for row in light_data)
         light_data_as_dict = {element['date']:element['value'] for element in light_data}
+        above = 0
+        below = 0
+        if light_data:
+            above = (times_above_threshhold/len(light_data)) * 100
+            below = ((len(light_data) - times_above_threshhold)/len(light_data)) * 100
         response_body = {
             "light_rate": {
-                "above": (times_above_threshhold/len(light_data)) * 100,
-                "below": ((len(light_data) - times_above_threshhold)/len(light_data)) * 100
+                "above": above,
+                "below": below
             },
             "temps": temp_data_as_dict,
             "lights": light_data_as_dict

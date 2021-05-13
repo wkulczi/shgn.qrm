@@ -4,7 +4,7 @@ couch = None
 db = None
 db_name = None
 
-def init(couch_db_url= 'http://admin:admin@127.0.0.1:5984', database_name = 'mockups'):
+def init(couch_db_url= 'http://test:test@127.0.0.1:5984', database_name = 'mockups'):
     global couch, db, db_name
     db_name=database_name
     couch = couchdb.Server(couch_db_url)

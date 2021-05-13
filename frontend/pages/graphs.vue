@@ -23,14 +23,12 @@
         <!-- todo line chart of temperatures, should be pretty steady -->
       </v-col>
       <v-col cols="4">
-        <video
-          id="example-video"
-          width="600"
-          height="300"
-          class="video-js vjs-default-skin"
-          controls
-        ></video>
-        Stream
+        <video-player ref="videoPlayer"
+                  class="vjs-custom-skin"
+                  :options="playerOptions"
+                  @play="onPlayerPlay($event)"
+                  @ready="onPlayerReady($event)">
+        </video-player>
         <!-- todo DASH stream-->
       </v-col>
     </v-row>
@@ -55,23 +53,52 @@ export default {
       pieChartData: [],
       lightChartData: {},
       tempChartData: {},
+      playerOptions: {
+        autoplay: true,
+        controls: true,
+        controlBar: {
+          timeDivider: false,
+          durationDisplay: false
+        }
+        // poster: 'https://surmon-china.github.io/vue-quill-editor/static/images/surmon-5.jpg'
+      }
     }
   },
-  mounted() {
-    // eslint-disable-next-line no-undef
-    const player = videojs('example-video')
-    player.src({
-      src: 'http://localhost/streaming/manifest.mpd',
-      type: 'application/dash+xml',
-    })
-    // player.src({
-    //   src:
-    //     'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd',
-    //   type: 'application/dash+xml',
-    // })
-    player.play()
+  computed: {
+    player () {
+      return this.$refs.videoPlayer.player
+    }
   },
+  methods: {
+    onPlayerPlay (player) {
+      console.log('player play!', player)
+    },
+    onPlayerReady (player) {
+      console.log('player ready!', player)
+      this.player.play()
+    },
+    playVideo: function (source) {
+      const video = {
+        withCredentials: false,
+        type: 'application/x-mpegurl',
+        src: source
+      }
+      this.player.reset() // in IE11 (mode IE10) direct usage of src() when <src> is already set, generated errors,
+      this.player.src(video)
+      // this.player.load()
+      this.player.play()
+    }
+  },
+  mounted () {
+    const src = 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8'
+    this.playVideo(src)
+  }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.player {
+    position: absolute !important;
+    width: 100%;
+}
+</style>
