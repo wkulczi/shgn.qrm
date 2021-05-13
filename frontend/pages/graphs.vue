@@ -60,11 +60,15 @@ export default {
   mounted() {
     // eslint-disable-next-line no-undef
     const player = videojs('example-video')
-    // player.src({ src: 'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd', type: 'application/dash+xml'});
     player.src({
-      src: 'http://localhost/camera01/camera01.mpd',
+      src: 'http://localhost/streaming/manifest.mpd',
       type: 'application/dash+xml',
     })
+    // player.src({
+    //   src:
+    //     'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd',
+    //   type: 'application/dash+xml',
+    // })
     player.play()
   },
 }
