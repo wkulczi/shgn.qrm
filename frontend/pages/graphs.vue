@@ -58,6 +58,8 @@ export default {
       playerOptions: {
         autoplay: true,
         controls: true,
+        width: 600,
+        height: 300,
         controlBar: {
           timeDivider: false,
           durationDisplay: false,
@@ -72,8 +74,7 @@ export default {
     },
   },
   mounted() {
-    const src =
-      'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8'
+    const src = 'http://192.168.1.101:3274/camera/livestream.m3u8'
     this.playVideo(src)
   },
   methods: {
@@ -86,8 +87,7 @@ export default {
     },
     playVideo(source) {
       const video = {
-        withCredentials: false,
-        type: 'application/x-mpegurl',
+        // type: 'application/x-mpegurl',
         src: source,
       }
       this.player.reset() // in IE11 (mode IE10) direct usage of src() when <src> is already set, generated errors,
