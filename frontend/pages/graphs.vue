@@ -18,7 +18,13 @@
     </v-row>
     <v-row>
       <v-col cols="6">
-        <line-chart :data="tempChartData" :precision="3" />
+        <line-chart
+          :data="tempChartData"
+          :precision="3"
+          xtitle="Timestamp"
+          ytitle="Temperature"
+          title="Temperature in time"
+        />
         <!--        Temp graph-->
         <!-- todo line chart of temperatures, should be pretty steady -->
       </v-col>
@@ -41,7 +47,7 @@
 export default {
   name: 'Graphs',
   async asyncData({ $axios }) {
-    const resp = await $axios.$get('/api/graph-data')
+    const resp = await $axios.$get('/api/dashboard-data')
     const pieChartData = [
       ['Above threshhold', resp.light_rate.above],
       ['Below threshhold', resp.light_rate.below],

@@ -5,14 +5,14 @@ import gpio_calls
 
 def check_sensors():
     print("Checking sensors")
-    couch_calls.add_record(gpio_calls.query_light_mock(), 'light')
-    couch_calls.add_record(gpio_calls.query_water_temp_mock(), 'temp')
+    couch_calls.add_record(gpio_calls.query_light(), 'light')
+    couch_calls.add_record(gpio_calls.query_water_temp(), 'temp')
 
 def init_db():
     couch_calls.init()    
 
 def init_schedule():
-    schedule.every(25).seconds.do(check_sensors) #only for mockups, do not use in real case scenario (the db will explode)
+    schedule.every(5).minutes.do(check_sensors) #only for mockups, do not use in real case scenario (the db will explode)
     # schedule.every().hour.do(check_sensors)
 
 def start_loop():

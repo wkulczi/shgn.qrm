@@ -39,30 +39,28 @@ def create_app(test_config=None):
 
     @app.route('/api/temp')
     def get_temp():
-        temp = gpio_calls.query_water_temp_mock()
+        temp = gpio_calls.query_water_temp()
         response_body = {
             "temp": temp
         }
         res = make_response(jsonify(response_body), 200)
         return res
 
-    @app.route('/api/tables')
+    @app.route('/api/temp-data')
     def get_tables():
         temp_data = couch_calls.get_records_by_key('temp')
-        light_data = couch_calls.get_records_by_key('light')
         response_body = {
             "temps": temp_data,
-            "lights": light_data
         }
         res = make_response(jsonify(response_body), 200)
         return res
 
-    @app.route('/api/graph-data')
-    def get_graph_data():
+    @app.route('/api/dashboard-data')
+    def get_dashboard_data():
         temp_data_as_dict = {element['date']: element['value'] for element in couch_calls.get_records_by_key('temp', False)}
         light_data = couch_calls.get_records_by_key('light', False)
-        times_above_threshhold = sum(row['value']> LIGHT_THRESHHOLD for row in light_data)
-        light_data_as_dict = {element['date']:element['value'] for element in light_data}
+        times_above_threshhold = sum(row['value']['val']> LIGHT_THRESHHOLD for row in light_data)
+        light_data_as_dict = {element['date']:element['value']['val'] for element in light_data}
         above = 0
         below = 0
         if light_data:
@@ -75,6 +73,19 @@ def create_app(test_config=None):
             },
             "temps": temp_data_as_dict,
             "lights": light_data_as_dict
+        }
+        res = make_response(jsonify(response_body),200)
+        return res
+
+
+    @app.route('/api/light-data')
+    def get_light_data():
+        light_data = couch_calls.get_records_by_key('light',False)
+        light_data_voltage_dict = {element['date']:element['value']['voltage'] for row in light_data}
+        light_data_as_value = {element['date']:element['value']['val'] for row in light_data}
+        response_body  = {
+            "lights_voltage": temp_data_voltage_dict,
+            "lights_vals": temp_data_as_value
         }
         res = make_response(jsonify(response_body),200)
         return res

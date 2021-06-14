@@ -1,0 +1,9 @@
+/api/temp: 
+{ "temp": [{timestamp:value}] }
+
+/api/light-data:
+{
+  "lights_voltage": [{timestamp: value}],
+  "lights_vals": [{timestamp: value}],
+  "lights_table_data": [{timstamp: {val: value, voltage:value}]
+}
