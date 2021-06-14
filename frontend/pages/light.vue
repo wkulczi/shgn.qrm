@@ -19,7 +19,7 @@
           />
         </v-row>
       </v-col>
-      <v-col offset="1" cols="3">
+      <v-col offset="1" cols="4">
         <v-row>
           <v-card flat>
             <v-card-title> Light data</v-card-title>
@@ -41,15 +41,8 @@
 <script>
 export default {
   name: 'Light',
-  // async asyncData({ $axios }) {
-  asyncData({ $axios }) {
-    // const resp = await $axios.$get('/api/tables')
-    // const lightData = resp.lights
-    const resp = {
-      lights_voltage: [{ 1: 23 }],
-      lights_vals: [{ 2: 2 }],
-      lights_table_data: [{ timestamp: { val: 2, voltage: 1 } }],
-    }
+  async asyncData({ $axios }) {
+    const resp = await $axios.$get('/api/light-data')
     const lightData = resp.lights_table_data
     const lightsVals = resp.lights_vals
     const lightsVoltage = resp.lights_voltage
@@ -69,8 +62,8 @@ export default {
           sortable: false,
           value: 'date',
         },
-        { text: 'Value', value: 'val' },
-        { text: 'Voltage', value: 'voltage' },
+        { text: 'Value', value: 'val.val' },
+        { text: 'Voltage', value: 'val.voltage' },
       ],
     }
   },
