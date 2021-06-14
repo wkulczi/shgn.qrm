@@ -21,6 +21,7 @@
     "vue-videojs7": "^1.0.2"
   },
   "devDependencies": {
+    "@nuxt/image": "^0.4.14",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/vuetify": "^1.11.3",

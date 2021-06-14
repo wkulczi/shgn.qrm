@@ -82,6 +82,7 @@ nav {
 }
 
 .sticky {
+  background: rgba(253, 253, 253, 0.47);
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
