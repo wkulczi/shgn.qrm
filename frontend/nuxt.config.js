@@ -1,10 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  server: {
-    port: 8080,
-    host:'0.0.0.0'
-  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'frontend',
@@ -23,7 +19,10 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/chartkick.js', {src: '~/plugins/vue-videojs7.js', mode: 'client'}],
+  plugins: [
+    '~/plugins/chartkick.js',
+    { src: '~/plugins/vue-videojs7.js', mode: 'client' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

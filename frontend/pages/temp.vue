@@ -4,15 +4,7 @@
       <v-col cols="6">
         <v-row>
           <line-chart
-            :data="lightsVals"
-            xtitle="Timestamp"
-            ytitle="Light intensity"
-            title="Light intensity in time"
-          />
-        </v-row>
-        <v-row>
-          <line-chart
-            :data="lightsVoltage"
+            :data="tempsGraph"
             xtitle="Timestamp"
             ytitle="Light intensity in voltage"
             title="Light intensity in time (V)"
@@ -22,10 +14,10 @@
       <v-col offset="1" cols="3">
         <v-row>
           <v-card flat>
-            <v-card-title> Light data</v-card-title>
+            <v-card-title> Temp data</v-card-title>
             <v-data-table
               :headers="headers"
-              :items="lightData"
+              :items="tempsTable"
               :items-per-page="10"
               class="elevation-1"
               :footer-props="footerProps"
@@ -40,24 +32,26 @@
 
 <script>
 export default {
-  name: 'Light',
+  name: 'Temp',
   // async asyncData({ $axios }) {
   asyncData({ $axios }) {
     // const resp = await $axios.$get('/api/tables')
     // const lightData = resp.lights
     const resp = {
-      lights_voltage: [{ 1: 23 }],
-      lights_vals: [{ 2: 2 }],
-      lights_table_data: [{ timestamp: { val: 2, voltage: 1 } }],
+      tempsGraph: [{ key1: 'value1' }],
+      tempsTable: [
+        { date: 2, val: 3 },
+        { date: 3, val: 4 },
+      ],
     }
-    const lightData = resp.lights_table_data
-    const lightsVals = resp.lights_vals
-    const lightsVoltage = resp.lights_voltage
-    return { lightData, lightsVals, lightsVoltage }
+    const tempTable = resp.tempsTable
+    const tempGraph = resp.tempsGraph
+    return { tempGraph, tempTable }
   },
   data() {
     return {
-      lightData: {},
+      tempsTable: [],
+      tempsGraph: {},
       footerProps: {
         rowsPerPageText: '',
         itemsPerPageOptions: [],
@@ -70,7 +64,6 @@ export default {
           value: 'date',
         },
         { text: 'Value', value: 'val' },
-        { text: 'Voltage', value: 'voltage' },
       ],
     }
   },

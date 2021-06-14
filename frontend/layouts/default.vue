@@ -9,10 +9,10 @@
           <NuxtLink to="/graphs" exact>Graphs</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/tables" exact>Tables</NuxtLink>
+          <NuxtLink to="/light" exact>Light</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/timelapse" exact>Timelapse</NuxtLink>
+          <NuxtLink to="/temp" exact>Temperature</NuxtLink>
         </li>
         <li>
           <NuxtLink to="/about" exact>About</NuxtLink>

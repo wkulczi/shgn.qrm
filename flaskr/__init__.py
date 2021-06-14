@@ -49,8 +49,10 @@ def create_app(test_config=None):
     @app.route('/api/temp-data')
     def get_tables():
         temp_data = couch_calls.get_records_by_key('temp')
+        temp_table = [{"date": k, "val": v} for k,v in temp_data]
         response_body = {
-            "temps": temp_data,
+            "temps_graph": temp_data,
+            "temps_table": temp_table
         }
         res = make_response(jsonify(response_body), 200)
         return res
@@ -83,9 +85,11 @@ def create_app(test_config=None):
         light_data = couch_calls.get_records_by_key('light',False)
         light_data_voltage_dict = {element['date']:element['value']['voltage'] for row in light_data}
         light_data_as_value = {element['date']:element['value']['val'] for row in light_data}
+        temp_data_table = [{"date": k, "val":v} for kv in light_data]
         response_body  = {
             "lights_voltage": temp_data_voltage_dict,
             "lights_vals": temp_data_as_value
+            "lights_table_data": temp_data_table
         }
         res = make_response(jsonify(response_body),200)
         return res
