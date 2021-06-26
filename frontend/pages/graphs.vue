@@ -80,7 +80,7 @@ export default {
     },
   },
   mounted() {
-    const src = 'http://192.168.1.101:3274/camera/livestream.m3u8'
+    const src = 'http://kulczi.online:3274/camera/livestream.m3u8'
     this.playVideo(src)
   },
   methods: {

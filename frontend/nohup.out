@@ -1,0 +1,267 @@
+yarn run v1.22.10
+$ nuxt
+ℹ [HPM] Proxy created: /api/  -> http://localhost:5000
+ℹ Listening on: http://192.168.1.101:8080/
+ℹ Preparing project for development
+ℹ Initial build may take a while
+ℹ Discovered Components: .nuxt/components/readme.md
+✔ Builder initialized
+✔ Nuxt files generated
+ℹ Compiling Server
+ℹ Compiling Client
+✔ Server: Compiled successfully in 25.53s
+✔ Client: Compiled successfully in 30.56s
+ℹ Waiting for file changes
+ℹ Memory usage: 295 MB (RSS: 449 MB)
+ℹ Listening on: http://192.168.1.101:8080/
+
+ ERROR  Error in fetch(): Request failed with status code 500
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+
+ WARN  Cannot stringify a function transformRequest
+
+
+ WARN  Cannot stringify a function transformResponse
+
+
+ WARN  Cannot stringify a function httpAdapter
+
+
+ WARN  Cannot stringify a function validateStatus
+
+
+ WARN  Cannot stringify arbitrary non-POJOs ClientRequest
+
+
+ WARN  Cannot stringify a function toJSON
+
+
+ ERROR  [HPM] Error occurred while proxying request raspberrypi:8080/api/temp to http://localhost:5000/ [ECONNREFUSED] (https://nodejs.org/api/errors.html#errors_common_system_errors)
+
+
+ ERROR  [HPM] Error occurred while proxying request localhost:8080/api/temp to http://localhost:5000/ [ECONNREFUSED] (https://nodejs.org/api/errors.html#errors_common_system_errors)
+
+
+ ERROR  Error in fetch(): Request failed with status code 504
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+
+ WARN  Cannot stringify a function transformRequest
+
+
+ WARN  Cannot stringify a function transformResponse
+
+
+ WARN  Cannot stringify a function httpAdapter
+
+
+ WARN  Cannot stringify a function validateStatus
+
+
+ WARN  Cannot stringify arbitrary non-POJOs ClientRequest
+
+
+ WARN  Cannot stringify a function toJSON
+
+
+ ERROR  [HPM] Error occurred while proxying request raspberrypi:8080/api/dashboard-data to http://localhost:5000/ [ECONNREFUSED] (https://nodejs.org/api/errors.html#errors_common_system_errors)
+
+
+ ERROR  [HPM] Error occurred while proxying request localhost:8080/api/dashboard-data to http://localhost:5000/ [ECONNREFUSED] (https://nodejs.org/api/errors.html#errors_common_system_errors)
+
+
+ ERROR  Request failed with status code 504
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+
+ ERROR  [HPM] Error occurred while proxying request raspberrypi:8080/api/dashboard-data to http://localhost:5000/ [ECONNREFUSED] (https://nodejs.org/api/errors.html#errors_common_system_errors)
+
+
+ ERROR  [HPM] Error occurred while proxying request raspberrypi:8080/api/temp to http://localhost:5000/ [ECONNREFUSED] (https://nodejs.org/api/errors.html#errors_common_system_errors)
+
+
+ ERROR  [HPM] Error occurred while proxying request raspberrypi:8080/api/light-data to http://localhost:5000/ [ECONNREFUSED] (https://nodejs.org/api/errors.html#errors_common_system_errors)
+
+
+ ERROR  [HPM] Error occurred while proxying request raspberrypi:8080/api/temp to http://localhost:5000/ [ECONNREFUSED] (https://nodejs.org/api/errors.html#errors_common_system_errors)
+
+
+ ERROR  [HPM] Error occurred while proxying request raspberrypi:8080/api/temp-data to http://localhost:5000/ [ECONNREFUSED] (https://nodejs.org/api/errors.html#errors_common_system_errors)
+
+
+ ERROR  [HPM] Error occurred while proxying request raspberrypi:8080/api/temp to http://localhost:5000/ [ECONNREFUSED] (https://nodejs.org/api/errors.html#errors_common_system_errors)
+
+
+ ERROR  Request failed with status code 500
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+
+ ERROR  Request failed with status code 500
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+
+ ERROR  Request failed with status code 500
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+
+ ERROR  Request failed with status code 500
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+↻ Updated pages/graphs.vue
+ℹ Compiling Server
+ℹ Compiling Client
+✔ Server: Compiled successfully in 9.15s
+✔ Client: Compiled successfully in 9.11s
+
+ WARN  Compiled with 1 warnings
+
+
+ WARN  ESLintError
+
+
+/home/pi/projects/shgn.qrm/frontend/pages/graphs.vue
+  88:7  warning  Unexpected console statement  no-console
+  91:7  warning  Unexpected console statement  no-console
+
+✖ 2 problems (0 errors, 2 warnings)
+
+
+yarn run v1.22.10
+$ nuxt
+ℹ [HPM] Proxy created: /api/  -> http://localhost:5000
+ℹ Listening on: http://192.168.1.101:8080/
+ℹ Preparing project for development
+ℹ Initial build may take a while
+ℹ Discovered Components: .nuxt/components/readme.md
+✔ Builder initialized
+✔ Nuxt files generated
+ℹ Compiling Server
+ℹ Compiling Client
+✔ Server: Compiled successfully in 30.03s
+✔ Client: Compiled successfully in 35.37s
+ℹ Waiting for file changes
+ℹ Memory usage: 242 MB (RSS: 419 MB)
+ℹ Listening on: http://192.168.1.101:8080/
+
+ ERROR  Request failed with status code 500
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+
+ ERROR  Request failed with status code 500
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+
+ ERROR  Request failed with status code 500
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+yarn run v1.22.10
+error Command "serve" not found.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+yarn run v1.22.10
+error Command "serve" not found.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+yarn run v1.22.10
+$ nuxt
+ℹ [HPM] Proxy created: /api/  -> http://localhost:5000
+ℹ Listening on: http://192.168.1.101:8080/
+ℹ Preparing project for development
+ℹ Initial build may take a while
+ℹ Discovered Components: .nuxt/components/readme.md
+✔ Builder initialized
+✔ Nuxt files generated
+ℹ Compiling Server
+ℹ Compiling Client
+✔ Server: Compiled successfully in 28.35s
+✔ Client: Compiled successfully in 33.59s
+ℹ Waiting for file changes
+ℹ Memory usage: 241 MB (RSS: 418 MB)
+ℹ Listening on: http://192.168.1.101:8080/
+
+ ERROR  Error in fetch(): Request failed with status code 500
+
+  at createError (node_modules/axios/lib/core/createError.js:16:15)
+  at settle (node_modules/axios/lib/core/settle.js:17:12)
+  at IncomingMessage.handleStreamEnd (node_modules/axios/lib/adapters/http.js:260:11)
+  at IncomingMessage.emit (node:events:377:35)
+  at endReadableNT (node:internal/streams/readable:1312:12)
+  at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+
+ WARN  Cannot stringify a function transformRequest
+
+
+ WARN  Cannot stringify a function transformResponse
+
+
+ WARN  Cannot stringify a function httpAdapter
+
+
+ WARN  Cannot stringify a function validateStatus
+
+
+ WARN  Cannot stringify arbitrary non-POJOs ClientRequest
+
+
+ WARN  Cannot stringify a function toJSON
+

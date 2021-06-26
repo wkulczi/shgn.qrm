@@ -1,11 +1,20 @@
 import os
 
+import atexit
+from apscheduler.schedulers.background import BackgroundScheduler
+
 from flask import Flask, jsonify, make_response
 import gpio_calls
 import couch_calls
 
 
-LIGHT_THRESHHOLD=600 #change if needed in the future
+LIGHT_THRESHHOLD=10000 #change if needed in the future
+
+
+def check_sensors():
+    print("checking sensors")
+    couch_calls.add_record(gpio_calls.query_light(),'light')
+    couch_calls.add_record(gpio_calls.query_water_temp(), 'temp')
 
 
 def create_app(test_config=None):
@@ -14,6 +23,10 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
     )
+
+    cron = BackgroundScheduler(daemon=True)
+    cron.add_job(check_sensors, 'interval', hours=1)
+    cron.start()
 
     #init couch_db connection
     #todo: use env variables to pass url and db name
@@ -82,8 +95,7 @@ def create_app(test_config=None):
 
     @app.route('/api/light-data')
     def get_light_data():
-        light_data = couch_calls.get_records_by_key('light',False)
-        print(light_data)
+        light_data = couch_calls.get_records_by_key('light')
         light_data_voltage_dict = {element['date']:element['value']['voltage'] for element in light_data}
         light_data_as_value = {element['date']:element['value']['val'] for element in light_data}
         temp_data_table = [{"date": element['date'], "val":element['value']} for element in light_data]
